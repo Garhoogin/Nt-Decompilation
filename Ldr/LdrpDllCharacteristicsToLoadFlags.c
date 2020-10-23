@@ -1,4 +1,4 @@
-ULONG LdrpDllCharacteristicsToLoadFlags(ULONG Characteristics){
+ULONG __fastcall LdrpDllCharacteristicsToLoadFlags(ULONG Characteristics){
 	ULONG Flags = (Characteristics & 4) << 1;
 	if(Characteristics & 2)
 		Flags |= 0x40;
