@@ -14,12 +14,12 @@ NTSYSAPI NTSTATUS LdrLoadDll(PWCHAR Path, PULONG Flags, PUNICODE_STRING ModuleFi
 	}
 	if(DllLoadFlags & 8 && !(LdrpPolicyBits & 8)){
 		if(LdrpDebugFlags & 3)
-			LdrpLogDbgPrint("minkernel\\ntdll\ldrapi.c", 0xAC, "LdrLoadDll", 0, "Nonpackaged process attempted to load a packaged DLL\n");
+			LdrpLogDbgPrint("minkernel\\ntdll\\ldrapi.c", 0xAC, "LdrLoadDll", 0, "Nonpackaged process attempted to load a packaged DLL\n");
 		if(LdrpDebugFlags & 0x10)
 			__debugbreak();
 		if(LdrpDebugFlags & 9)
 			LdrpLogDbgPrint("minkernel\\ntdll\\ldrapi.c", 0xCC, "LdrLoadDll", 4, "Status: 0x%08lx\n", 0xC00001AA);
-		return 0xC00001AA;
+		return 0xC00001AA; //unknown status value?
 	}
 	if(NtCurrentTeb()->LoaderWorker){
 		if(LdrpDebugFlags & 9)
