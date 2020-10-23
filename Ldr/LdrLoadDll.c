@@ -1,3 +1,4 @@
+//Windows 10 2004 Build 19041.572
 //note that the second parameter is a pointer.
 NTSYSAPI NTSTATUS LdrLoadDll(PWCHAR Path, PULONG Flags, PUNICODE_STRING ModuleFileName, PHANDLE ModuleHandle){
 	//align stack to 8 byte boundary, reserve 0x174 bytes of locals
@@ -26,6 +27,7 @@ NTSYSAPI NTSTATUS LdrLoadDll(PWCHAR Path, PULONG Flags, PUNICODE_STRING ModuleFi
 			LdrpLogDbgPrint("minkernel\\ntdll\\ldrapi.c", 0xCC, "LdrLoadDll", 4, "Status: 0x%08lx\n", STATUS_INVALID_THREAD);
 		return STATUS_INVALID_THREAD;
 	}
+	PVOID var128[20];
 	LdrpInitializeDllPath(ModuleFileName->Buffer, Path, &var128); //__fastcall function
 	LdrpLogDllState(0, ModuleFileName, 0x14A8); //__fastcall function
 	UNICODE_STRING String;
