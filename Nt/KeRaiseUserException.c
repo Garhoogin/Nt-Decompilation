@@ -11,7 +11,7 @@ NTSTATUS KeRaiseUserException(NSTATUS ExceptionCode){
 		TrapFrame->SegCs = 0x33;
 		TrapFrame->Rip = KeRaiseUserExceptionDispatcher;
 		if(TrapFrame->ExceptionArchive != 2) {
-			KiSetupForInstrumentationReturn();
+			KiSetupForInstrumentationReturn(TrapFrame);
 		}
 	}
 	if(Irql < APC_LEVEL) {
