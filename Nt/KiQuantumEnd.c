@@ -1,7 +1,7 @@
 KPCRB KiProcessorBlock[];
 
 typedef struct _SCHEDULER_ASSIST{
-	ULONG Unknown1;
+	KPRIORITY Priority;
 	ULONG Unknown2;
 	ULONG Unknown3;
 	ULONG Unknown4;
